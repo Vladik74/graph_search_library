@@ -1,3 +1,5 @@
+import datetime
+
 from graph import Graph
 
 
@@ -26,10 +28,39 @@ def dijkstra(graph, end_node):
     return dist
 
 
-g = Graph()
-g.add_nodes([0, 1, 2, 3, 4, 5])
-g.add_edges([(0, 1, 7), (0, 2, 9), (0, 5, 14), (1, 2, 10),
-             (1, 3, 15), (2, 3, 11), (2, 5, 1), (3, 4, 6),
-             (4, 5, 9)])
+g1 = Graph()
+for i in range(10000):
+    g1.add_node(i)
+    if i < 9996:
+        g1.add_edge(i, i + 4, i * 2)
+    if 2 < i < 5000:
+        g1.add_edge(i, i + 6, i * 3 + 4)
+        g1.add_edge(i - 1, 2 * i + 1, 2 * i + 1)
 
-print(dijkstra(g, 0))
+g2 = Graph()
+for i in range(1000):
+    g2.add_node(i)
+    if i < 996:
+        g2.add_edge(i, i+4, i*2)
+    if 2 < i < 500:
+        g2.add_edge(i, i + 6, i * 3 + 4)
+        g2.add_edge(i - 1, 2 * i + 1, 2 * i + 1)
+
+g3 = Graph()
+for i in range(50000):
+    g3.add_node(i)
+    if i < 49996:
+        g3.add_edge(i, i + 4, i * 2)
+    if 2 < i < 25000:
+        g3.add_edge(i, i + 6, i * 3 + 4)
+        g3.add_edge(i - 1, 2 * i + 1, 2 * i + 1)
+
+t1 = datetime.datetime.now()
+print(dijkstra(g1, 0))
+print(datetime.datetime.now() - t1)
+t2 = datetime.datetime.now()
+print(dijkstra(g2, 0))
+print(datetime.datetime.now() - t2)
+t3 = datetime.datetime.now()
+print(dijkstra(g3, 0))
+print(datetime.datetime.now() - t3)
