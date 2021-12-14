@@ -1,13 +1,13 @@
 import datetime
 
-from graph import Graph
+from dijkstra_graph import Graph
 
 
 def min_distance(graph, dist, min_dist_list):
     min_dist = float('inf')
     min_index = -1
     for v in range(len(graph)):
-        if dist[v] < min_dist and min_dist_list[v] == False:
+        if dist[v] < min_dist and min_dist_list[v] is False:
             min_dist = dist[v]
             min_index = v
     return min_index
@@ -41,7 +41,7 @@ g2 = Graph()
 for i in range(1000):
     g2.add_node(i)
     if i < 996:
-        g2.add_edge(i, i+4, i*2)
+        g2.add_edge(i, i + 4, i * 2)
     if 2 < i < 500:
         g2.add_edge(i, i + 6, i * 3 + 4)
         g2.add_edge(i - 1, 2 * i + 1, 2 * i + 1)
