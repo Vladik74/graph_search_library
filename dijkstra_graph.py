@@ -10,7 +10,7 @@ class Node:
         return f"'{self.id}' neighbours:   " \
                f"{[f'{n}, w={self.neighbours[n]}' for n in self.neighbours]}"
 
-    def add_neighbour(self, neighbour, weight=0):
+    def add_neighbour(self, neighbour, weight=0): #вычисляет расстояние от текущей до указанной
         self.neighbours[neighbour] = weight
 
     def get_edges(self):
